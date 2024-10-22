@@ -19,7 +19,7 @@ const Register = () => {
          password: password,
       };
 
-      const resp = await fetch("http://localhost:3000/Register/api", {
+      const resp = await fetch(`${process.env.NEXT_SITE_BASE_URI}/Register/api`, {
          method: "POST",
          headers: {
             "content-type": "application/json",

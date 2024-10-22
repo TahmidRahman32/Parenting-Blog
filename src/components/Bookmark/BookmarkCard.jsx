@@ -20,7 +20,7 @@ const BookmarkCard = ({ mark, dataLoaded }) => {
          confirmButtonText: "Yes, delete it!",
       }).then(async (result) => {
          if (result.isConfirmed) {
-            const deleted = await fetch(`http://localhost:3000/my-bookmark/api/delete-bookmark/${_id}`, {
+            const deleted = await fetch(`${process.env.NEXT_SITE_BASE_URI}/my-bookmark/api/delete-bookmark/${_id}`, {
                method: "DELETE",
             });
             const resp = await deleted.json();
@@ -48,7 +48,7 @@ const BookmarkCard = ({ mark, dataLoaded }) => {
    };
    return (
       <div className="relative max-w-sm h-full mx-auto group hover:no-underline focus:no-underline  rounded-lg transition border-2 hover:scale-105  hover:border-[#A08D6D] border-opacity-30">
-         {cover_image ? <Image width={450} height={120} alt="cover" src={cover_image}  /> : <NotFound />}
+         {cover_image ? <Image width={450} height={120} alt="cover" src={cover_image} /> : <NotFound />}
 
          <div className="p-6 space-y-2">
             <Link href={`/blogs/${_id}`} className="text-2xl font-semibold group-hover:underline group-focus:underline hover:text-blue-600 " title="click and read full details">

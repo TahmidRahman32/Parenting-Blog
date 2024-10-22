@@ -27,7 +27,7 @@ const BlogCard = ({ Blog }) => {
          id: Blog.id,
       };
 
-      const resp = await fetch("http://localhost:3000/bookmark/api", {
+      const resp = await fetch(`${process.env.NEXT_SITE_BASE_URI}/bookmark/api`, {
          method: "POST",
          headers: {
             "content-type": "application/json",
