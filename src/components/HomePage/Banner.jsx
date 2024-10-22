@@ -54,8 +54,8 @@ const Banner = () => {
             className="mySwiper h-[466px]"
          >
             <div className=" relative">
-               {sliderImg.map((i) => (
-                  <SwiperSlide>
+               {sliderImg.map((i,inx) => (
+                  <SwiperSlide key={inx}>
                      <div className="w-full">
                         <Image
                            alt="Mountains"

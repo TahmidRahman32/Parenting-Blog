@@ -9,9 +9,8 @@ import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import SocialLogin from "@/components/SocialLogin/SocialLogin";
 
-
-const login = () => {
-   const router = useRouter()
+const Login = () => {
+   const router = useRouter();
    const searchParams = useSearchParams();
    const path = searchParams.get("redirect");
    const handleSinIn = async (e) => {
@@ -19,16 +18,16 @@ const login = () => {
       const form = e.target;
       const email = form.email.value;
       const password = form.password.value;
-      
+
       const resp = await signIn("credentials", {
          email,
          password,
          redirect: true,
-         callbackUrl: path ? path : '/'
+         callbackUrl: path ? path : "/",
       });
-      
+
       if (resp.status === 200) {
-         router.push('/')
+         router.push("/");
       }
    };
    return (
@@ -41,7 +40,7 @@ const login = () => {
             </div>
             <div className="flex-1 mx-auto max-w-xl shadow-xl rounded-lg border my-8 p-6">
                <h2 className="font-primaryN pb-3 text-xl font-bold">Welcome Back</h2>
-              <SocialLogin></SocialLogin>
+               <SocialLogin></SocialLogin>
                <div className="divider">or</div>
                <div>
                   <form onSubmit={handleSinIn}>
@@ -91,4 +90,4 @@ const login = () => {
    );
 };
 
-export default login;
+export default Login;

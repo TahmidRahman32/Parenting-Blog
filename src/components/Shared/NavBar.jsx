@@ -44,20 +44,20 @@ const NavBar = () => {
                   </div>
                   <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                      <li>
-                        {links.map(({ name, path }) => (
-                           <Link href={path}>{name}</Link>
+                        {links.map(({ name, path },inx) => (
+                           <Link key={inx} href={path}>{name}</Link>
                         ))}
                      </li>
                   </ul>
                </div>
                <Link href={"/"}>
-                  <Image height={100} width={100} src={logo}></Image>
+                  <Image height={100} width={100} alt="logo" src={logo}></Image>
                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                <ul className="menu menu-horizontal px-1 space-x-4">
-                  {links.map(({ name, path }) => (
-                     <Link className={pathName === path ? "font-primaryN text-blue-500 border-b-2 border-blue-500" : " font-primaryN "} href={path}>
+                  {links.map(({ name, path },inx) => (
+                     <Link key={inx} className={pathName === path ? "font-primaryN text-blue-500 border-b-2 border-blue-500" : " font-primaryN "} href={path}>
                         {name}
                      </Link>
                   ))}
@@ -82,14 +82,14 @@ const NavBar = () => {
                   <div className="dropdown dropdown-end">
                      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                           <Image width={120} height={120} src={session.data?.user?.image}></Image>
+                           <Image width={120} height={120} src={session.data?.user?.image} alt="userImage"></Image>
                         </div>
                      </div>
                      <ul tabIndex={0} className="menu menu-sm dropdown-content bg-white rounded-box z-50 mt-3 w-52 p-2 shadow">
                         <div>
                            <div className="text-center my-8 ">
                               <div className="">
-                                 <Image width={120} height={120} src={session.data?.user?.image} className="rounded-full w-10 mx-auto"></Image>
+                                 <Image width={120} height={120} src={session.data?.user?.image} alt="UserImage" className="rounded-full w-10 mx-auto"></Image>
                               </div>
                               <div className="space-y-2">
                                  <h3 className="text-xl font-semibold">{session.data?.user?.name}</h3>
@@ -99,7 +99,9 @@ const NavBar = () => {
                         </div>
 
                         <li className="mx-auto">
-                           <a title="Not Working" className="">Logout</a>
+                           <a title="Not Working" className="">
+                              Logout
+                           </a>
                         </li>
                      </ul>
                   </div>

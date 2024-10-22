@@ -69,7 +69,7 @@ const BlogCard = ({ Blog }) => {
             </div>
 
             <div className="mx-auto group hover:no-underline focus:no-underline rounded-lg  p-2">
-               {cover_image ? <Image width={320} height={420} className="object-cover  w-full rounded h-44 bg-gray-500" src={cover_image} /> : <NotFound />}
+               {cover_image ? <Image width={320} height={420} className="object-cover  w-full rounded h-44 bg-gray-500" src={cover_image} alt="cover image" /> : <NotFound />}
                <div className="flex flex-wrap py-6 gap-2 border-t border-dashed justify-between">
                   {tags?.map((tag) => (
                      <a key={tag} rel="noopener noreferrer" href="#" className="px-3 py-1 hover:underline  rounded-lg text-blue-600">
