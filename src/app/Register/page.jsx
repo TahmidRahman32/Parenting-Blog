@@ -20,7 +20,7 @@ const Register = () => {
       };
 
       try {
-         const resp = await fetch(`${process.env.NEXT_SITE_BASE_URI}Register/api`, {
+         const resp = await fetch(`https://parenting-blog-six.vercel.app/Register/api`, {
             method: "POST",
             headers: {
                "content-type": "application/json",
