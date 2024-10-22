@@ -62,9 +62,7 @@ const handle = NextAuth({
                } else {
                   return user;
                }
-            } catch (error) {
-              
-            }
+            } catch (error) {}
          } else {
             return user;
          }
