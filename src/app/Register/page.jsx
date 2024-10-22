@@ -19,17 +19,32 @@ const Register = () => {
          password: password,
       };
 
-      const resp = await fetch(`${process.env.NEXT_SITE_BASE_URI}/Register/api`, {
-         method: "POST",
-         headers: {
-            "content-type": "application/json",
-         },
-         body: JSON.stringify(userInfo),
-      });
+      try {
+         const resp = await fetch(`${process.env.NEXT_SITE_BASE_URI}/Register/api`, {
+            method: "POST",
+            headers: {
+               "content-type": "application/json",
+            },
+            body: JSON.stringify(userInfo),
+         });
 
-      if (!resp.ok) {
-         {
-            toast.error(resp.statusText, {
+         if (!resp.ok) {
+            {
+               toast.error(resp.statusText, {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                  transition: Bounce,
+               });
+            }
+            return;
+         } else if (resp.status === 200) {
+            toast.success("🦄 Wow so easy! user created", {
                position: "top-right",
                autoClose: 5000,
                hideProgressBar: false,
@@ -40,21 +55,10 @@ const Register = () => {
                theme: "light",
                transition: Bounce,
             });
+            form.reset();
          }
-         return;
-      } else if (resp.status === 200) {
-         toast.success("🦄 Wow so easy! user created", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-         });
-         form.reset();
+      } catch (error) {
+         return [];
       }
    };
 
