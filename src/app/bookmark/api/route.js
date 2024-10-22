@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDb";
+import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
    const allBookmark = await request.json();
@@ -6,9 +7,9 @@ export const POST = async (request) => {
    const bookmarkCollection = await db.collection("bookmark");
    try {
       const bookmark = await bookmarkCollection.insertOne(allBookmark);
-      return Response.json({ massage: "bookmark successfully" }, { status: 200 });
+      return NextResponse.json({ massage: "bookmark successfully" }, { status: 200 });
    } catch (error) {
-      console.log(error);
-      return Response.json({ massage: "something wrong" }, { status: 400 });
+      
+      return NextResponse.json({ massage: "something wrong" }, { status: 400 });
    }
 };

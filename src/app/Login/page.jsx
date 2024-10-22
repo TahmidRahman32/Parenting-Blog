@@ -26,7 +26,7 @@ const login = () => {
          redirect: true,
          callbackUrl: path ? path : '/'
       });
-      console.log(resp);
+      
       if (resp.status === 200) {
          router.push('/')
       }

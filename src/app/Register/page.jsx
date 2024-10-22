@@ -18,7 +18,7 @@ const Register = () => {
          email: email,
          password: password,
       };
-      console.log(userInfo);
+
       const resp = await fetch("http://localhost:3000/Register/api", {
          method: "POST",
          headers: {

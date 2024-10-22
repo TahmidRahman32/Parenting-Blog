@@ -63,7 +63,7 @@ const handle = NextAuth({
                   return user;
                }
             } catch (error) {
-               console.log(error);
+              
             }
          } else {
             return user;

@@ -11,11 +11,7 @@ export const connectDB = async () => {
             deprecationErrors: true,
          },
       });
-    db =  client.db("ParentingBlog");
-    return db
-     
-   } catch (error) {
-      console.log(error);
-   }
+      db = client.db("ParentingBlog");
+      return db;
+   } catch (error) {}
 };
-

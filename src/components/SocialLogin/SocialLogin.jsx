@@ -13,11 +13,11 @@ const SocialLogin = () => {
    const path = searchParams.get("redirect");
 
    const SocialLoginHandler = async (provider) => {
-      const resp = await signIn(provider,{
+      const resp = await signIn(provider, {
          redirect: true,
-         callbackUrl: path ? path: '/'
+         callbackUrl: path ? path : "/",
       });
-      console.log(resp);
+
       if (session.status === "authenticated") {
          router.push("/");
       }

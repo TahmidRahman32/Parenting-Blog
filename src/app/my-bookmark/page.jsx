@@ -11,9 +11,13 @@ const GetBookmark = () => {
    const session = useSession();
    const [bookmark, setBookmark] = useState([]);
    const dataLoaded = async () => {
-      const resp = await fetch(`http://localhost:3000/my-bookmark/api/${session?.data?.user?.email}`);
-      const data = await resp.json();
-      setBookmark(data.myBookmark);
+      try {
+         const resp = await fetch(`http://localhost:3000/my-bookmark/api/${session?.data?.user?.email}`);
+         const data = await resp.json();
+         setBookmark(data.myBookmark);
+      } catch (error) {
+         return [];
+      }
    };
    useEffect(() => {
       dataLoaded();
