@@ -51,7 +51,7 @@ const Banner = () => {
             }}
             autoplay
             modules={[EffectFade, Pagination, Autoplay]}
-            className="mySwiper h-[466px]"
+            className="mySwiper h-[560px]"
          >
             <div className=" relative">
                {sliderImg.map((i,inx) => (
@@ -72,8 +72,8 @@ const Banner = () => {
                ))}
             </div>
          </Swiper>
-         <div className="h-[466px] w-[1748px] bg-gradient-to-r from-[#02080dcc] to-[#02080dcc] absolute top-[74px] z-40">
-            <div className="flex justify-center items-center h-[460px]">
+         <div className="md:h-[560px] md:w-[1920px] bg-gradient-to-r from-[#02080dcc] to-[#02080dcc] absolute top-[74px] z-40">
+            <div className="flex justify-center items-center h-[660px]">
                <div className="text-center">
                   <h2 className=" text-6xl font-primaryG bg-gradient-to-r from-[#511364] via-[#A08D6D] to-green-400 text-transparent bg-clip-text bg-300% animate-gradient">Welcome to Parenting Blog </h2>
                   <Link href={"/blogs"}>
