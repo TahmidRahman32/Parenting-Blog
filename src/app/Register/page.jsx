@@ -5,10 +5,16 @@ import loginSvg from "../../../public/icons/login.jpg";
 import Link from "next/link";
 import { Bounce, toast } from "react-toastify";
 import SocialLogin from "@/components/SocialLogin/SocialLogin";
+import { useState } from "react";
+import { ImSpinner9 } from "react-icons/im";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
+   const [ReLoad, setReLoad] = useState(false);
+   const router = useRouter();
    const handleSinUp = async (e) => {
       e.preventDefault();
+      setReLoad(true);
       const form = e.target;
       const name = form.name.value;
       const email = form.email.value;
@@ -19,32 +25,17 @@ const Register = () => {
          password: password,
       };
 
-      try {
-         const resp = await fetch(`${process.env.NEXT_SITE_BASE_URI}/Register/api`, {
-            method: "POST",
-            headers: {
-               "content-type": "application/json",
-            },
-            body: JSON.stringify(userInfo),
-         });
+      const resp = await fetch(`${process.env.NEXT_SITE_BASE_URI}/signin/api`, {
+         method: "POST",
+         headers: {
+            "content-type": "application/json",
+         },
+         body: JSON.stringify(userInfo),
+      });
 
-         if (!resp.ok) {
-            {
-               toast.error(resp.statusText, {
-                  position: "top-right",
-                  autoClose: 5000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                  theme: "light",
-                  transition: Bounce,
-               });
-            }
-            return;
-         } else if (resp.status === 200) {
-            toast.success("🦄 Wow so easy! user created", {
+      if (!resp.ok) {
+         {
+            toast.error(resp.statusText, {
                position: "top-right",
                autoClose: 5000,
                hideProgressBar: false,
@@ -55,10 +46,25 @@ const Register = () => {
                theme: "light",
                transition: Bounce,
             });
-            form.reset();
+            setReLoad(false);
          }
-      } catch (error) {
-         return [];
+
+         return;
+      } else if (resp.status === 200) {
+         toast.success("🦄 Wow so easy! user created", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+         });
+         setReLoad(false);
+         form.reset();
+         router.push("/");
       }
    };
 
@@ -108,8 +114,8 @@ const Register = () => {
                         </div>
                      </div>
                      <div className="form-control mt-6 hover:scale-105 decoration transition">
-                        <button class="before:ease relative h-10 rounded-xl w-full overflow-hidden border border-[#A08D6D] bg-[#A08D6D] text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-[#A08D6D] hover:before:-translate-x-[505px] text-xl font-primaryN">
-                           <span relative="relative z-10">Register</span>
+                        <button className="before:ease relative h-10 rounded-xl w-full overflow-hidden border border-[#A08D6D] bg-[#A08D6D] text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-[#A08D6D] hover:before:-translate-x-[505px] text-xl font-primaryN">
+                           {ReLoad ? <ImSpinner9 size={25} className="animate-spin mx-auto" /> : <span relative="relative z-10">Register</span>}
                         </button>
                      </div>
                   </form>

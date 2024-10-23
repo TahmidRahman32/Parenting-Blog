@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import loginSvg from "../../../public/icons/login.jpg";
 import { FcGoogle } from "react-icons/fc";
-import { ImGithub } from "react-icons/im";
+import { ImGithub, ImSpinner9 } from "react-icons/im";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -11,10 +11,12 @@ import SocialLogin from "@/components/SocialLogin/SocialLogin";
 
 const Login = () => {
    const router = useRouter();
+    const [ReLoad, setReLoad] = useState(false);
    const searchParams = useSearchParams();
    const path = searchParams.get("redirect");
    const handleSinIn = async (e) => {
       e.preventDefault();
+      setReLoad(true)
       const form = e.target;
       const email = form.email.value;
       const password = form.password.value;
@@ -25,7 +27,7 @@ const Login = () => {
          redirect: true,
          callbackUrl: path ? path : "/",
       });
-
+          setReLoad(false)
       if (resp.status === 200) {
          router.push("/");
       }
@@ -70,8 +72,8 @@ const Login = () => {
                         </div>
                      </div>
                      <div className="form-control mt-6 hover:scale-105 decoration transition">
-                        <button class="before:ease relative h-10 rounded-xl w-full overflow-hidden border border-[#A08D6D] bg-[#A08D6D] text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-[#A08D6D] hover:before:-translate-x-[505px] text-xl font-primaryN">
-                           <span relative="relative z-10">LogIn</span>
+                        <button disabled={ReLoad} className="before:ease relative h-10 rounded-xl w-full overflow-hidden border border-[#A08D6D] bg-[#A08D6D] text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-[#A08D6D] hover:before:-translate-x-[505px] text-xl font-primaryN">
+                           {ReLoad ? <ImSpinner9 size={25} className="animate-spin mx-auto" /> : <span relative="relative z-10">LogIn</span>}
                         </button>
                      </div>
                   </form>

@@ -1,3 +1,4 @@
+
 import { connectDB } from "@/lib/connectDb";
 import { NextResponse } from "next/server";
 export const GET = async (request, { params }) => {
@@ -5,8 +6,8 @@ export const GET = async (request, { params }) => {
    const bookmarkCollection = await db.collection("bookmark");
    try {
       const myBookmark = await bookmarkCollection.find({ email: params.email }).toArray();
-       return NextResponse.json( {myBookmark});
+      return NextResponse.json({ myBookmark });
    } catch (error) {
-     return NextResponse.json({ massage: "something wrong" }, { status: 400 });
+      return NextResponse.json({ massage: "something wrong" }, { status: 400 });
    }
 };

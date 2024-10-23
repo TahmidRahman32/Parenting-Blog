@@ -9,7 +9,6 @@ export const POST = async (request) => {
       const bookmark = await bookmarkCollection.insertOne(allBookmark);
       return NextResponse.json({ massage: "bookmark successfully" }, { status: 200 });
    } catch (error) {
-      
       return NextResponse.json({ massage: "something wrong" }, { status: 400 });
    }
 };

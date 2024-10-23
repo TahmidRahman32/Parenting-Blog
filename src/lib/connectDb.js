@@ -3,7 +3,7 @@ let db;
 export const connectDB = async () => {
    if (db) return db;
    try {
-      const uri = process.env.MONGODB_URI_LOCAL;
+      const uri = process.env.MONGODB_URI_ATLAS;
       const client = new MongoClient(uri, {
          serverApi: {
             version: ServerApiVersion.v1,

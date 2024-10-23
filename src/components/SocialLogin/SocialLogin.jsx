@@ -25,7 +25,7 @@ const SocialLogin = () => {
    return (
       <div className="flex justify-center gap-3 ">
          <button onClick={() => SocialLoginHandler("google")} className=" py-2 px-5 flex gap-2 rounded border hover:shadow-lg hover:scale-105 decoration transition">
-            {session.status === "loading" ? <ImSpinner9 size={25} className="animate-spin" /> : <FcGoogle size={25} />}
+            {session.status === "loading" ? <ImSpinner9  size={25} className="animate-spin" /> : <FcGoogle size={25} />}
             <h3 className="font-primaryN font-semibold">LogIn with Google</h3>
          </button>
          <button onClick={() => SocialLoginHandler("github")} className=" py-2 px-5 flex gap-2 rounded border hover:shadow-lg hover:scale-105 decoration transition">

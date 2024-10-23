@@ -16,7 +16,7 @@ const GetBookmark = () => {
          const data = await resp.json();
          setBookmark(data.myBookmark);
       } catch (error) {
-         return []
+         return [];
       }
    };
    useEffect(() => {

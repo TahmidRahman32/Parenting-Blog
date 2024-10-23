@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import Swal from "sweetalert2";
+import profile from "../../../public/icons/Profile.svg";
 
 const NavBar = () => {
    const pathName = usePathname();
@@ -44,8 +45,10 @@ const NavBar = () => {
                   </div>
                   <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                      <li>
-                        {links.map(({ name, path },inx) => (
-                           <Link key={inx} href={path}>{name}</Link>
+                        {links.map(({ name, path }, inx) => (
+                           <Link key={inx} href={path}>
+                              {name}
+                           </Link>
                         ))}
                      </li>
                   </ul>
@@ -56,7 +59,7 @@ const NavBar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                <ul className="menu menu-horizontal px-1 space-x-4">
-                  {links.map(({ name, path },inx) => (
+                  {links.map(({ name, path }, inx) => (
                      <Link key={inx} className={pathName === path ? "font-primaryN text-blue-500 border-b-2 border-blue-500" : " font-primaryN "} href={path}>
                         {name}
                      </Link>
@@ -82,14 +85,18 @@ const NavBar = () => {
                   <div className="dropdown dropdown-end">
                      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                           <Image width={120} height={120} src={session.data?.user?.image} alt="userImage"></Image>
+                           {session.data?.user?.image ? <Image width={120} height={120} src={session.data?.user?.image} alt="userImage"></Image> : <Image width={120} height={120} src={profile} alt="userImage"></Image>}
                         </div>
                      </div>
                      <ul tabIndex={0} className="menu menu-sm dropdown-content bg-white rounded-box z-50 mt-3 w-52 p-2 shadow">
                         <div>
                            <div className="text-center my-8 ">
                               <div className="">
-                                 <Image width={120} height={120} src={session.data?.user?.image} alt="UserImage" className="rounded-full w-10 mx-auto"></Image>
+                                 {session.data?.user?.image ? (
+                                    <Image width={120} height={120} src={session.data?.user?.image} alt="userImage"></Image>
+                                 ) : (
+                                    <Image width={120} height={120} className="rounded-full w-10 mx-auto" src={profile} alt="userImage"></Image>
+                                 )}
                               </div>
                               <div className="space-y-2">
                                  <h3 className="text-xl font-semibold">{session.data?.user?.name}</h3>

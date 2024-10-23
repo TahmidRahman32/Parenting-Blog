@@ -1,10 +1,9 @@
-import { connectDB } from "@/lib/connectDb";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import bcrypt from "bcrypt";
-
 import CredentialsProvider from "next-auth/providers/credentials";
+import { connectDB } from "@/lib/connectDb";
 const handle = NextAuth({
    secret: process.env.GITHUB_CLIENT_SECRET_JWT,
    session: {

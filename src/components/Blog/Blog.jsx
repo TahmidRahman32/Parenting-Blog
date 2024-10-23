@@ -67,7 +67,7 @@ const Blog = ({ blog }) => {
                      </p>
 
                      <Link href={`/blogs/${id}`}>
-                        <button class="before:ease relative h-10 rounded-xl w-28 overflow-hidden border border-[#A08D6D] bg-[#A08D6D] text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-[#A08D6D] hover:before:-translate-x-40 text-xl font-primaryC">
+                        <button className="before:ease relative h-10 rounded-xl w-28 overflow-hidden border border-[#A08D6D] bg-[#A08D6D] text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-[#A08D6D] hover:before:-translate-x-40 text-xl font-primaryC">
                            <span relative="relative z-10">Details</span>
                         </button>
                      </Link>

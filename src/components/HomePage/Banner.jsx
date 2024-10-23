@@ -77,8 +77,8 @@ const Banner = () => {
                <div className="text-center">
                   <h2 className=" text-6xl font-primaryG bg-gradient-to-r from-[#511364] via-[#A08D6D] to-green-400 text-transparent bg-clip-text bg-300% animate-gradient">Welcome to Parenting Blog </h2>
                   <Link href={"/blogs"}>
-                     <button class="relative flex mx-auto mt-12 h-[50px] w-48 items-center justify-center overflow-hidden bg-[#A08D6D] rounded-full text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-[#5548324d] before:duration-500 before:ease-out hover:shadow-[#5548324d] hover:before:h-56 hover:before:w-56">
-                        <span class="relative z-10 text-xl font-primaryF">Read Blog</span>
+                     <button className="relative flex mx-auto mt-12 h-[50px] w-48 items-center justify-center overflow-hidden bg-[#A08D6D] rounded-full text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-[#5548324d] before:duration-500 before:ease-out hover:shadow-[#5548324d] hover:before:h-56 hover:before:w-56">
+                        <span className="relative z-10 text-xl font-primaryF">Read Blog</span>
                      </button>
                   </Link>
                </div>
